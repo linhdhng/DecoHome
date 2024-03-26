@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'Client'
-    }
+    },
+    items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }]
 })
 
 module.exports = mongoose.model('User', userSchema)

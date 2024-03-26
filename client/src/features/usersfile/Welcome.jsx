@@ -19,7 +19,7 @@ function Welcome() {
   return (
     <div className="dashboard">
       <section className="userPage">
-      <h1>Welcome User</h1>
+      <h1>Welcome User<i class="fa-solid fa-heart"></i></h1>
       <p>
         <Link to="/dashboard/userfile">View Your Products</Link>
       </p>

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../../models/Products");
+const User = require("../../models/Users")
 const { validationResult } = require("express-validator");
 
 // @route:   GET api/products
@@ -106,4 +107,49 @@ router.delete("/:id", async (req, res) => {
     }
 })
 
-module.exports = router
+// Add item to user's list
+router.post('/:userId/add', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { title, description, material, category, price } = req.body;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Create a new item
+    const newItem = new Product({ title, description, material, category, price });
+    await newItem.save();
+
+    // Add the item to the user's list
+    user.items.push(newItem);
+    await user.save();
+
+    res.status(201).json({ message: 'Item added to list', item: newItem });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Get user's list
+router.get('/:userId/list', async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Find the user by ID and populate the items
+    const user = await User.findById(userId).populate('items');
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json(user.items);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+module.exports = router;

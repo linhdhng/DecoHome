@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import ContextProvider from './context/app_conext.jsx'
-import Scrollbar from 'smooth-scrollbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@awesome.me/kit-KIT_CODE/icons/classic/solid'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,6 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ContextProvider>
   </React.StrictMode>
 )
+
+
+const element = <FontAwesomeIcon icon={faHouse} />
+
+ReactDOM.render(element, document.body)
 
 // const options = {
 //   "damping": 0.07

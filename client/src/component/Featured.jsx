@@ -1,14 +1,8 @@
-import FilteredProducts from "./helper/FilteredProducts"
+import { useState } from "react";
+//Featured Product of the week
 
 function Featured() {
-  return (
-    <div className="container">
-    <h2>Cabinet Products</h2>
-    <FilteredProducts category="Cabinet" />
-    <h2>Chair Products</h2>
-    <FilteredProducts category="Chair" />
-  </div>
-  )
+
 }
 
-export default Featured
+export default Featured;

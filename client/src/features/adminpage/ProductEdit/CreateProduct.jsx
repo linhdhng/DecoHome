@@ -23,7 +23,7 @@ function CreateProduct() {
       })
       .then((res) => {
         console.log(res);
-        navigate(-1)
+        navigate("/admin")
       })
       .catch((err) => console.log(err));
   };

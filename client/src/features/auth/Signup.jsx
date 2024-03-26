@@ -24,20 +24,6 @@ function Signup() {
 
    const nav = useNavigate()
 
-  // const handleSubmit = (e) => {
-  //     e.preventDefault()
-  //     if (password !== password2) {
-  //       console.log('Passwords do not match');
-  //     } else {
-  //     axios
-  //       .post("http://localhost:5000/api/users", formData)
-  //       .then((res) => {
-  //         alert("You have successfully registered your account.");
-  //         useNavigate("/login");
-  //       })
-  //       .catch((err) => console.err(err.message));
-  //   }
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
