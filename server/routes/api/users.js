@@ -89,4 +89,20 @@ router.post(
   }
 );
 
+router.get('/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  try {
+      const user = await User.findOne({ _id: userId});
+      if (user) {
+          res.json(user);
+      } else {
+          res.status(404).json({ message: 'Cannot find User' });
+      }
+  } catch (error) {
+      console.error('Error fetching product:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 module.exports = router;

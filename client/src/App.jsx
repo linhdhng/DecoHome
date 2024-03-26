@@ -14,7 +14,9 @@ import Featured from './component/Featured'
 import Cabinet from './component/Cabinet'
 import TableNChair from './component/TableNChair'
 import KitchenNBath from './component/KitNBath'
-
+import AddToList from "./component/helper/AddToList";
+import { ProtectedRoutes } from './features/adminpage/ProtectedRoutes'
+// import WishList from "./component/WishList"
 
 function App() {
   
@@ -30,17 +32,20 @@ function App() {
       <Route path='/cabinet' element={<Cabinet />} />
       <Route path='/tablenchair' element={<TableNChair/>}/>
       <Route path='/kitnbath' element={<KitchenNBath/>}/>
+      {/* <Route path="/wishlist" component={WishlistPage} /> */}
+
           {/* Users Routes */}
 
             <Route path='/dashboard' element={<Welcome/>} />
-              <Route path='userfile' element={<UsersProduct/>} />
-          {/* Protected Routes with auth */}
-          <Route path='admin' element={<AdminControl />} />
+              <Route path='/userfile' element={<UsersProduct />} />
+
+
+          <Route path='/admin' element={<AdminControl />} />
           <Route path='/create' element={<CreateProduct />}/>
           <Route path='/edit/:id' element={<UpdateProduct />}/>
 
     </Routes>
-
+    <AddToList />
     </>
   )
 }

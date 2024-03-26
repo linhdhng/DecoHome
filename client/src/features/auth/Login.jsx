@@ -13,16 +13,6 @@ function Login() {
 
   const nav = useNavigate();
 
-  const isLoggedIn = true;
-
-  window.addEventListener("DOMContentLoaded", (event) => {
-    const loginBtn = document.getElementById("loginBtn");
-    if (isLoggedIn) {
-      loginBtn.classList.add("hidden");
-    } else {
-      loginBtn.classList.remove("hidden");
-    }
-  });
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);

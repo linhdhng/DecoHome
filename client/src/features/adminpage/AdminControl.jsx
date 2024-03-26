@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../context/fetch";
 
 function AdminControl() {
-
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
@@ -16,9 +15,15 @@ function AdminControl() {
       .catch((err) => console.log(err));
   }, []);
 
+  const auth = useAuth()
+  const [data, setData] = useState([]);
+  if (!auth.user || auth.user.role !== "Admin") {
+    return <div>You are not authorized to view this page.</div>;
+  }
+
   return (
     <div className="flex-grow">
-        {/* <Outlet /> */}
+      <h1>Welcome, {auth.user.name}!</h1>
       <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
         <div className="w-50 h-full overflow-auto bg-white rounded p-3 mt-8 m-b8">
           <Link to="/create" className="btn btn-success btn-sm">

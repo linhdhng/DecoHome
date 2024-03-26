@@ -30,13 +30,17 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     ['token'].forEach((obj) => removeCookie(obj)); // remove data save in cookies
   };
-
+  
+  const getUserId = async() => {
+    const res = await axios.get('http://localhost:5000/api/users')
+  }
   const value = useMemo(
     () => ({
       cookies,
       login,
       logout,
       signUp,
+      getUserId,
     }),
     [cookies]
   );
