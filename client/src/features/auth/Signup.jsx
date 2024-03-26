@@ -1,7 +1,10 @@
 import { Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/fetch";
-import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 function Signup() {
   const { signUp } = useAuth();
@@ -47,28 +50,34 @@ function Signup() {
 
   return (
     <div>
+      
+      <Form className="form-container" autoComplete="off" onSubmit={handleSubmit}>
       <h1>Sign Up</h1>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <label htmlFor="name1">Name: </label>
-        <input
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalName">
+      <Form.Label column sm={6} htmlFor="name1">Name: </Form.Label>
+      <Col sm={10}><input
           type="text"
           id="name1"
           name="name"
           value={name}
           placeholder="Enter Your Name"
           onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="email1">Email: </label>
-        <input
+        /> </Col>
+      </Form.Group>
+      <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+        <Form.Label column sm={6}>Email: </Form.Label>
+        <Col sm={10}><input
           type="email"
           id="email1"
           name="email"
           value={email}
           placeholder="Email"
           onChange={(e) => onChange(e)}
-        />
-        <label htmlFor="password1">Password: </label>
-        <input
+        /></Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+        <Form.Label column sm={6}>Password: </Form.Label>
+        <Col sm={10}><input
           type="password"
           id="password1"
           name="password"
@@ -77,9 +86,11 @@ function Signup() {
           placeholder="Set Password"
           onChange={(e) => onChange(e)}
           minLength="6"
-        />
-        <label htmlFor='password2'>Re-enter Password: </label>
-        <input
+        /></Col>
+        </Form.Group>
+        <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+        <Form.Label column sm={6}>Re-enter Password: </Form.Label>
+        <Col sm={10}><input
           type="password"
           id="password2"
           name="password2"
@@ -87,15 +98,20 @@ function Signup() {
           value={password2}
           onChange={(e) => onChange(e)}
           minLength="6"
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-      <p>
-        Already have an account?{" "}
+        /></Col></Form.Group>
+        <Form.Group as={Row} className="mb-3">
+        <Col sm={{ span: 10, offset: 2 }}>
+        <Button type="submit">Sign Up</Button>
+        </Col>
+        </Form.Group>
+        <p>
+        Already have an account?
         <button>
           <Link to="/login">Log In</Link>
         </button>
       </p>
+      </Form>
+      
     </div>
   );
 }

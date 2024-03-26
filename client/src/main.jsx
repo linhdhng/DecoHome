@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 )
 
-const options = {
-  "damping": 0.07
-}
-Scrollbar.init(document.querySelector("#my-scrollbar"), options)
+// const options = {
+//   "damping": 0.07
+// }
+// Scrollbar.init(document.querySelector("#my-scrollbar"), options)

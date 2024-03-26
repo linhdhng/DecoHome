@@ -1,61 +1,104 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/fetch";
-import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 
 function Login() {
   const { login } = useAuth();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const nav = useNavigate()
+  const nav = useNavigate();
 
-  const isLoggedIn = true; 
-        
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const loginBtn = document.getElementById('loginBtn');
-            if (isLoggedIn) {
-                loginBtn.classList.add('hidden');
-            } else {
-                loginBtn.classList.remove('hidden');
-            }
-        });
+  const isLoggedIn = true;
+
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const loginBtn = document.getElementById("loginBtn");
+    if (isLoggedIn) {
+      loginBtn.classList.add("hidden");
+    } else {
+      loginBtn.classList.remove("hidden");
+    }
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    console.log('Success');
-    nav('/dashboard');
+    console.log("Success");
+    nav("/dashboard");
   };
 
   return (
-    <div>
-      <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login</h1>
-      <form  className="space-y-6" autoComplete="off" onSubmit={handleSubmit}>
-        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email: </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          minLength="6"
-        />
-        <button type="submit">Log In</button>
-      </form>
-      <p>
-        Don't have an account?{" "}
-        <button>
-          <Link to="/signup">Register Here</Link>
-        </button>
-      </p>
+    <div className="form-wrapper">
+      
+      <div className="form-container">
+      <div class="card-img">
+            {/* <!-- Background image for card set in CSS! --> */}
+        </div>
+        <Form className="form" autoComplete="off" onSubmit={handleSubmit}>
+        <h1 className="form-title">Login</h1>
+          <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+            <Form.Label column sm={3} htmlFor="email" className="block">
+              Email:{" "}
+            </Form.Label>
+            <Col sm={10}>
+              <input
+                className="form-control"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="formHorizontalPassword"
+          >
+            <Form.Label column sm={3} htmlFor="password">
+              Password:{" "}
+            </Form.Label>
+            <Col sm={10}>
+              {" "}
+              <input
+                className="form-control"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                minLength="6"
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Form.Check label="Remember me" />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3">
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Button type="submit">Log In</Button>
+            </Col>
+          </Form.Group>
+          <div class="text-center">
+          <a class="small" href="#">
+            Forgot password?
+          </a>
+          <p>
+            Already have and account?
+            <span>
+              <Link to="/signup">Register Here</Link>
+            </span>
+          </p>
+        </div>
+        </Form>
+        
+      </div>
     </div>
   );
 }

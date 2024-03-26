@@ -11,7 +11,7 @@ import AdminControl from './features/adminpage/AdminControl'
 import CreateProduct from './features/adminpage/ProductEdit/CreateProduct'
 import UpdateProduct from './features/adminpage/ProductEdit/UpdateProduct'
 import Header from './component/Header'
-
+import Test from './component/test'
 function App() {
   
   return (
@@ -34,6 +34,7 @@ function App() {
           <Route path='/edit/:id' element={<UpdateProduct />}/>
 
     </Routes>
+    <Test />
     </>
   )
 }

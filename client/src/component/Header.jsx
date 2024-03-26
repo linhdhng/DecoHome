@@ -13,21 +13,21 @@ function Header() {
       <div className="menu">
         <DropdownMenu />
         <Link className="nav-link" to="/">
-          DecoHome
+           Showcase
         </Link>
         <Link className="nav-link" to="/">
-          DecoHome
+          Featured Products
         </Link>
         <Link className="nav-link" to="/">
-          DecoHome
+          Partners
         </Link>
         </div>
         <div className="btn">
-          <button className="button-login">
-            <Link to="/login"> Login </Link>
+          <button>
+            <Link className="nav-link"to="/login"> Login </Link>
           </button>
-          <button className="button-register">
-            <Link to="/signup"> Register </Link>
+          <button>
+            <Link className="nav-link" to="/signup"> Register </Link>
           </button>
         </div>
       </nav>
