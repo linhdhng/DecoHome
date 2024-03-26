@@ -34,6 +34,21 @@ function Signup() {
     }
   };
 
+  const registerUser = async(e) => {
+    e.preventDefault()
+    const {name, email, password, password2} = data
+    try {
+      const {data} = await axios.post("http://localhost:5173/register", {
+        name, email, password, password2
+      })
+      if(data.error) {
+        
+      }
+    } catch(error) {
+      
+    }
+  }
+
   const { name, email, password, password2 } = formData
 
   return (

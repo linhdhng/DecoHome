@@ -1,4 +1,5 @@
 import './App.css'
+import axios from 'axios'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './component/Layout'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,6 +18,8 @@ import KitchenNBath from './component/KitNBath'
 import AddToList from "./component/helper/AddToList";
 import { ProtectedRoutes } from './features/adminpage/ProtectedRoutes'
 // import WishList from "./component/WishList"
+axios.defaults.baseURL = 'http://hocalhost:3000'
+axios.defaults.withCredentials = true;
 
 function App() {
   

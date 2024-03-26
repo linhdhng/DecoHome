@@ -11,10 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ContextProvider>
       <BrowserRouter>
-      <App/>
-      {/* <WishlistProvider>
         <App />
-      </WishlistProvider> */}
       </BrowserRouter>
     </ContextProvider>
   </React.StrictMode>
