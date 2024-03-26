@@ -9,16 +9,16 @@ function DropdownMenu() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="nav-dropdown-content">
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/cabinet">
           Cabinet
         </Link>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/tablenchair">
           Table & Chair
         </Link>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/wardrobe">
           Wardbrobe
         </Link>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/kitnbath">
           Kitchen & Bath
         </Link>
       </Dropdown.Menu>

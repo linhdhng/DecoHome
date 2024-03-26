@@ -22,6 +22,8 @@ function Signup() {
     });
   };
 
+   const nav = useNavigate()
+
   // const handleSubmit = (e) => {
   //     e.preventDefault()
   //     if (password !== password2) {
@@ -50,11 +52,11 @@ function Signup() {
 
   return (
     <div>
-      
-      <Form className="form-container" autoComplete="off" onSubmit={handleSubmit}>
+      <div className="form-container">
+      <Form  autoComplete="off" onSubmit={handleSubmit}>
       <h1>Sign Up</h1>
       <Form.Group as={Row} className="mb-3" controlId="formHorizontalName">
-      <Form.Label column sm={6} htmlFor="name1">Name: </Form.Label>
+      <Form.Label column sm={6}>Name: </Form.Label>
       <Col sm={10}><input
           type="text"
           id="name1"
@@ -77,7 +79,7 @@ function Signup() {
         </Form.Group>
         <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
         <Form.Label column sm={6}>Password: </Form.Label>
-        <Col sm={10}><input
+        <Col sm={8}><input
           type="password"
           id="password1"
           name="password"
@@ -90,7 +92,7 @@ function Signup() {
         </Form.Group>
         <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
         <Form.Label column sm={6}>Re-enter Password: </Form.Label>
-        <Col sm={10}><input
+        <Col sm={8}><input
           type="password"
           id="password2"
           name="password2"
@@ -100,18 +102,19 @@ function Signup() {
           minLength="6"
         /></Col></Form.Group>
         <Form.Group as={Row} className="mb-3">
-        <Col sm={{ span: 10, offset: 2 }}>
+        <Col sm={{ span: 13}}>
         <Button type="submit">Sign Up</Button>
         </Col>
         </Form.Group>
+
         <p>
         Already have an account?
-        <button>
+        <span>
           <Link to="/login">Log In</Link>
-        </button>
+        </span>
       </p>
       </Form>
-      
+      </div>
     </div>
   );
 }

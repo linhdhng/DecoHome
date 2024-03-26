@@ -14,23 +14,27 @@ function Welcome() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+
   return (
-    <section>
+    <div className="dashboard">
+      <section className="userPage">
       <h1>Welcome User</h1>
       <p>
         <Link to="/dashboard/userfile">View Your Products</Link>
       </p>
-      {/* <p>
-        <Link to="/dashboard/admin">Admin Control</Link>
-      </p> */}
+
+      <div className="products">
       {data.map((prod, index) => {
         return (
-          <div key={index}>
-            <h4>{prod.title}</h4>
+          <div className="card" key={index}>
+            <h5>{prod.title}</h5>
+            <p>{prod.description}</p>
           </div>
-        );
-      })}
-    </section>
+        )
+      })}</div>
+      </section>
+    </div>
   );
 }
 

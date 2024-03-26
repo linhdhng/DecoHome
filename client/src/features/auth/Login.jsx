@@ -34,14 +34,14 @@ function Login() {
     <div className="form-wrapper">
       
       <div className="form-container">
-      <div class="card-img">
+      <div className="card-img">
             {/* <!-- Background image for card set in CSS! --> */}
         </div>
         <Form className="form" autoComplete="off" onSubmit={handleSubmit}>
         <h1 className="form-title">Login</h1>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={3} htmlFor="email" className="block">
-              Email:{" "}
+            <Form.Label column sm={3} className="block">
+              Email:
             </Form.Label>
             <Col sm={10}>
               <input
@@ -59,11 +59,11 @@ function Login() {
             className="mb-3"
             controlId="formHorizontalPassword"
           >
-            <Form.Label column sm={3} htmlFor="password">
-              Password:{" "}
+            <Form.Label column sm={3}>
+              Password:
             </Form.Label>
             <Col sm={10}>
-              {" "}
+              
               <input
                 className="form-control"
                 type="password"
@@ -85,12 +85,12 @@ function Login() {
               <Button type="submit">Log In</Button>
             </Col>
           </Form.Group>
-          <div class="text-center">
-          <a class="small" href="#">
+          <div className="text-center">
+          <a href="#">
             Forgot password?
           </a>
           <p>
-            Already have and account?
+            Don't have an account?
             <span>
               <Link to="/signup">Register Here</Link>
             </span>

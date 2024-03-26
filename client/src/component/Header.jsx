@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import DropdownMenu from "./DropdownMenu"
+import DropdownMenu from "./helper/DropdownMenu"
 import React from "react";
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
         <Link className="nav-link" to="/">
            Showcase
         </Link>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/featured">
           Featured Products
         </Link>
         <Link className="nav-link" to="/">
