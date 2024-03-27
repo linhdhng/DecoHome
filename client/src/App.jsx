@@ -31,7 +31,7 @@ function App() {
         <Route path="/kitnbath" element={<KitchenNBath />} />
         <Route path="/showcase" element={<ShowCase />} />
         <Route path="/card" element={<CartPage />} />
-
+        
         {/* Users Routes */}
 
         <Route path="/dashboard" element={<Welcome />} />

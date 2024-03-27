@@ -12,7 +12,10 @@ body {
 header {
   background-color: #f5f5f5;
 }
-
+.model{
+  height: 700px;
+  width: 1380px;;
+}
 .shopper {
   text-decoration: none;
   color: seagreen;

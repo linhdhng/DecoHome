@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/esm/Button";
-import { useCookies } from 'react-cookie';
 import { useAuth } from "../../context/fetch";
 
 function Welcome({ products }) {
