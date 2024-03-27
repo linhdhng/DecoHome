@@ -13,6 +13,17 @@ header {
   background-color: #f5f5f5;
 }
 
+.shopper {
+  text-decoration: none;
+  color: seagreen;
+  font-size: large;
+  
+}
+.shopper a:hover {
+  text-decoration: none;
+  color: primary;
+
+}
 .hero-image {
   background-image: url("./assets//spacejoy-9M66C_w_ToM-unsplash.jpg"); /* Replace 'hero-image.jpg' with your actual image file */
   background-size: cover;
@@ -226,13 +237,12 @@ nav button {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.table-wrap{
+.table-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 
 .table {
   width: 100%;
@@ -294,7 +304,7 @@ a {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  z-index: 9999; 
+  z-index: 9999;
 }
 .form-item {
   margin-bottom: 10px;
@@ -308,7 +318,7 @@ a {
   box-sizing: border-box;
 }
 
-.form-input:hover  {
+.form-input:hover {
   box-shadow: 0 4px 12px rgba(36, 35, 35, 0.1);
 }
 

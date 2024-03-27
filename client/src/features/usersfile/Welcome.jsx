@@ -2,15 +2,16 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/esm/Button";
-// import {useWishlist} from "../../context/WishlistContext"
+import { useCookies } from 'react-cookie';
 import { useAuth } from "../../context/fetch";
 
-function Welcome({ product }) {
+function Welcome({ products }) {
   const { logout } = useAuth();
 
   const handleClick = () => {
     logout();
   };
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -22,10 +23,11 @@ function Welcome({ product }) {
       })
       .catch((err) => console.log(err));
   }, []);
-  // const { addToWishlist } = useWishlist()
-  // const handleAddToWishlist = () => {
-  //   addToWishlist(product);
-  // };
+
+  const handleAddToCart = (product) => {
+    const updatedCart = [...(cookies.cart || []), product];
+    setCookie('cart', JSON.stringify(updatedCart), { path: '/' });
+  };
 
   return (
     <div className="dashboard">
@@ -42,8 +44,8 @@ function Welcome({ product }) {
           <div className="card" key={index}>
             <h5>{prod.title}</h5>
             <p>{prod.description}</p>
-            {/* <Button onClick={handleAddToWishlist} className="btn btn-primary">Add to List</Button>
-            <Link to="/wishlist"> View your List</Link> */}
+            <Button onClick={() => handleAddToCart(products)} className="btn btn-primary">Add to Cart</Button>
+            <Link>View your cart here</Link>
           </div>
         )
       })}</div>
