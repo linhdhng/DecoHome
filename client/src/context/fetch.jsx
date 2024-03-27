@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     let res = await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/auth',
-      data: formData,
+      data: formData
     });
 
     setCookies('token', res.data.token); // your token
@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     let res = await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/users',
-      data: formData,
+      data: formData
     });
 
     setCookies('token', res.data.token); // your token
@@ -31,16 +31,16 @@ export const UserProvider = ({ children }) => {
     ['token'].forEach((obj) => removeCookie(obj)); // remove data save in cookies
   };
   
-  const getUserId = async() => {
-    const res = await axios.get('http://localhost:5000/api/users')
-  }
+  // const getUserId = async() => {
+  //   const res = await axios.get('http://localhost:5000/api/users')
+  // }
   const value = useMemo(
     () => ({
       cookies,
       login,
       logout,
       signUp,
-      getUserId,
+      // getUserId,
     }),
     [cookies]
   );

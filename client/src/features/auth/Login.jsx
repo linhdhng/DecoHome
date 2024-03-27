@@ -8,17 +8,26 @@ import Row from "react-bootstrap/Row";
 
 function Login() {
   const { login } = useAuth();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
   const nav = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    login(email, password);
+    await login(formData);
     console.log("Success");
     nav("/dashboard");
   };
+
+  function onChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
 
   return (
     <div className="form-wrapper">
@@ -40,7 +49,7 @@ function Login() {
                 id="email"
                 name="email"
                 placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => onChange(e)}
               />
             </Col>
           </Form.Group>
@@ -60,7 +69,7 @@ function Login() {
                 id="password"
                 name="password"
                 placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => onChange(e)}
                 minLength="6"
               />
             </Col>

@@ -9,17 +9,14 @@ import Welcome from './features/usersfile/Welcome'
 import UsersProduct from './features/usersfile/UsersProduct'
 import AdminControl from './features/adminpage/AdminControl'
 import CreateProduct from './features/adminpage/ProductEdit/CreateProduct'
-import UpdateProduct from './features/adminpage/ProductEdit/UpdateProduct'
 import Header from './component/Header'
 import Featured from './component/Featured'
 import Cabinet from './component/Cabinet'
 import TableNChair from './component/TableNChair'
 import KitchenNBath from './component/KitNBath'
 import AddToList from "./component/helper/AddToList";
-import { ProtectedRoutes } from './features/adminpage/ProtectedRoutes'
+// import { ProtectedRoutes } from './features/adminpage/ProtectedRoutes'
 // import WishList from "./component/WishList"
-axios.defaults.baseURL = 'http://hocalhost:3000'
-axios.defaults.withCredentials = true;
 
 function App() {
   
@@ -45,8 +42,6 @@ function App() {
 
           <Route path='/admin' element={<AdminControl />} />
           <Route path='/create' element={<CreateProduct />}/>
-          <Route path='/edit/:id' element={<UpdateProduct />}/>
-
     </Routes>
     <AddToList />
     </>

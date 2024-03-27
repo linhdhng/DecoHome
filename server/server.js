@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
-const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const multer  = require('multer');
@@ -11,7 +10,6 @@ const Image = require("./models/Image")
 connectDB();
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(cors());
 
 app.use(express.static("public"));
@@ -22,6 +20,8 @@ app.set("view engine", "ejs")
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/products", require("./routes/api/products"));
 app.use('/api/auth', require('./routes/api/auth'))
+
+
 
 // Multer storage configuration
 const storage = multer.diskStorage({

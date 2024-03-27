@@ -7,6 +7,7 @@ const { validationResult } = require("express-validator");
 // @route:   GET api/products
 // @desc:    Test users route
 // @access:  Public
+
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
@@ -91,15 +92,17 @@ router.put('/:productId', async(req, res) => {
     }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:productId", async (req, res) => {
   const productId = req.params.productId;
+  console.log('Product ID to be deleted:', productId)
     try {
-        const result = await Product.findOne({ _id: productId });
-        if (!result) {
-          res.status(404).json({ message: 'Product not found' });
-        } else {
-          await result.remove()
+        const result = await Product.deleteOne({ _id: productId });
+        console.log('Delete result:', result);
+        if (result.deletedCount > 0) {
           res.json({ message: 'Product deleted successfully' });
+          
+        } else {
+          res.status(404).json({ message: 'Product not found' });
         }
     } catch (error) {
         console.error('Error deleting product:', error);

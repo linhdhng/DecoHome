@@ -21,34 +21,41 @@ router.get("/", async (req, res) => {
 // @route:   POST api/users
 // @desc:    Reqgister User and Get JWT
 // @access:
-router.post("/", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    //Check if are valididation errors
-    if (!name) {
-      return res.json({
-        error: "Name is required",
-      });
-    }
-
-    if (!password || password.length < 6) {
-      return res.json({
-        error: "Password is required, minimum of 6 characters long",
-      });
-    }
-
-    const exist = await User.findOne({ email });
-    //Check if user already exists
-    if (exist) {
-      return res.status(400).json({ error: "User already exists" });
-    }
-
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
-    return res.json(user)
+router.post("/",
+  [
+    check('name', 'Name is required').not().isEmpty(),
+    check('email', 'Please inclue a valide email').isEmail(),
+    check(
+      'password',
+      'Please enter a password with 6 characters or more'
+    ).isLength({ min: 6 }),
+  ], async (req, res) => {
+      //Check if are valididation errors
+      const errors = validationResult(req)
+  
+      if(!errors.isEmpty()){
+          return res.status(400).json({ errors: errors.array() })
+      }
+  
+      // To test information being sent
+      // return res.send(req.body)
+  
+      const { name, email, password} = req.body;
+  
+      
+      try {
+          //Create instance of user
+          let user = await User.findOne({ email })
+          //Check if user already exists
+          if(user) {
+              return res.status(400).json([{msg: 'User already exists'}])
+          }
+  
+          user = new User({
+              name,
+              email,
+              password
+          })
     //Encrpyt PW
     const salt = await bcrypt.genSalt(10);
 
@@ -77,7 +84,7 @@ router.post("/", async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-});
+})
 
 router.get("/:userId", async (req, res) => {
   const userId = req.params.userId;

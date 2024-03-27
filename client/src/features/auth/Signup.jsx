@@ -24,30 +24,15 @@ function Signup() {
 
    const nav = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      signUp(formData);
+      await signUp(formData);
       nav('/login');
     }
   };
-
-  const registerUser = async(e) => {
-    e.preventDefault()
-    const {name, email, password, password2} = data
-    try {
-      const {data} = await axios.post("http://localhost:5173/register", {
-        name, email, password, password2
-      })
-      if(data.error) {
-        
-      }
-    } catch(error) {
-      
-    }
-  }
 
   const { name, email, password, password2 } = formData
 

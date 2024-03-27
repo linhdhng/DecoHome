@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const cors = require()
 const auth = require('../../middleware/auth');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,10 +9,7 @@ const User = require('../../models/Users');
 // @route:   GET api/auth
 // @desc:    Get User Data
 // @access:  Private
-router.use({
-  credentials: true,
-  origin: "http://localhost:5173"
-})
+
 
 router.get('/', auth, async (req, res) => {
   try {

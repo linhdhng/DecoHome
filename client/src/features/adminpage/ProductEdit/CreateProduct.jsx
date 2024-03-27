@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function CreateProduct() {
-  const [title, setTitle] = useState();
-  const [image, setImage] = useState();
-  const [description, setDescription] = useState();
-  const [category, setCategory] = useState();
-  const [price, setPrice] = useState();
-  const [material, setMaterial] = useState();
+  const [title, setTitle] = useState([]);
+  const [image, setImage] = useState([]);
+  const [description, setDescription] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [price, setPrice] = useState([]);
+  const [material, setMaterial] = useState([]);
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
